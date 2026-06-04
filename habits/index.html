@@ -790,10 +790,11 @@
           <span>Your Choice</span>
         </div>
       </button>
-
+      
       <div class="top-actions">
         <button class="back-btn" id="backBtn" type="button">Back</button>
         <button class="edit-toggle" id="editToggle" type="button">Edit</button>
+        <button class="back-btn show" id="howToUseBtn" type="button">How to use</button>
         <button class="theme-toggle" id="themeToggle" type="button">
           <span class="theme-dot"></span>
           <span id="themeText">Dark</span>
@@ -887,6 +888,25 @@
     <section class="view" id="normalChecklistView">
       <div class="cards-grid" id="normalChecklistGrid"></div>
     </section>
+
+    <section class="view" id="howToUseView">
+  <article class="data-card">
+    <div class="data-top">
+      <h2 class="data-name">How to use.</h2>
+      <div class="status dark">Guide</div>
+    </div>
+
+    <div class="checklist-list">
+      <div class="check-item">
+        <div class="check-btn">1</div>
+        <div>
+          <div class="check-title">ADD YOUR TEXT HERE</div>
+          <span class="check-time">ADD YOUR TEXT HERE</span>
+        </div>
+      </div>
+    </div> 
+  </article>
+</section>
 
     <p class="small-print">
       Your data is saved with local storage, so it stays on this browser and device.
@@ -1026,12 +1046,14 @@
     const checklistChoiceView = document.getElementById("checklistChoiceView");
     const timeChecklistView = document.getElementById("timeChecklistView");
     const normalChecklistView = document.getElementById("normalChecklistView");
+    const howToUseView = document.getElementById("howToUseView");
 
     const homeBtn = document.getElementById("homeBtn");
     const backBtn = document.getElementById("backBtn");
     const editToggle = document.getElementById("editToggle");
     const themeToggle = document.getElementById("themeToggle");
     const themeText = document.getElementById("themeText");
+    const howToUseBtn = document.getElementById("howToUseBtn");
 
     const heroEyebrow = document.getElementById("heroEyebrow");
     const heroTitle = document.getElementById("heroTitle");
@@ -1154,6 +1176,7 @@
       checklistChoiceView.classList.toggle("active", view === "checklistChoice");
       timeChecklistView.classList.toggle("active", view === "timeChecklist");
       normalChecklistView.classList.toggle("active", view === "normalChecklist");
+      howToUseView.classList.toggle("active", view === "howToUse");
 
       backBtn.classList.toggle("show", view !== "home");
       editToggle.classList.toggle("show", view === "normalChecklist");
@@ -1205,15 +1228,28 @@
         countBadge.textContent = `${normalChecklist.length} / ${MAX_CHECKLIST} items`;
       }
 
+      if (view === "howToUse") {
+        heroEyebrow.textContent = "How to use";
+        heroTitle.textContent = "ADD YOUR TITLE HERE";
+        heroCopy.textContent = "ADD YOUR TEXT HERE";
+        countBadge.textContent = "Guide";
+      }
+
       render();
     }
-
+    
     function goBack() {
       if (currentView === "timeChecklist" || currentView === "normalChecklist") {
         showView("checklistChoice");
-      } else {
-        showView("home");
+        return;
       }
+
+      if (currentView === "howToUse") {
+        showView("home");
+        return;
+      }
+
+      showView("home");
     }
 
     function formatDuration(ms) {
@@ -1756,14 +1792,24 @@
       normalChecklistGrid.appendChild(card);
       countBadge.textContent = `${normalChecklist.length} / ${MAX_CHECKLIST} items`;
     }
-
+    
     function render() {
       if (currentView === "sessions") renderSessions();
       if (currentView === "detox") renderDetoxes();
       if (currentView === "timeChecklist") renderTimeChecklist();
       if (currentView === "normalChecklist") renderNormalChecklist();
-      if (currentView === "home") countBadge.textContent = "Sessions, detox or checklist";
-      if (currentView === "checklistChoice") countBadge.textContent = "Time or normal";
+
+      if (currentView === "home") {
+        countBadge.textContent = "Sessions, detox or checklist";
+      }
+
+      if (currentView === "checklistChoice") {
+        countBadge.textContent = "Time or normal";
+      }
+
+      if (currentView === "howToUse") {
+        countBadge.textContent = "Guide";
+      }
     }
 
     function updateLiveDetox() {
@@ -1786,6 +1832,7 @@
     homeBtn.addEventListener("click", () => showView("home"));
     backBtn.addEventListener("click", goBack);
     themeToggle.addEventListener("click", toggleTheme);
+    howToUseBtn.addEventListener("click", () => showView("howToUse"));
 
     editToggle.addEventListener("click", () => {
       normalEditMode = !normalEditMode;
