@@ -433,16 +433,10 @@
     }
     #mihProfilePanel .row:last-child{border-bottom:none}
 
-    #sep-app,
-    #sep-scene-main,
-    #sep-scene-about{
+        #sep-app,
+    #sep-scene-main{
       background:#000;
       color:#fff;
-    }
-
-    #sep-scene-about{
-      min-height:100vh;
-      padding-bottom:5rem;
     }
 
     .cph-toggle{
@@ -495,7 +489,6 @@
 
     body.light-theme #sep-app,
     body.light-theme #sep-scene-main,
-    body.light-theme #sep-scene-about,
     body.light-theme #mih-app{
       background:#fff!important;
       color:#000!important;
@@ -575,8 +568,6 @@
     body.light-theme #btnShopNow,
     body.light-theme .add-to-cart,
     body.light-theme #viewCartBtn,
-    body.light-theme #aboutBackBtn,
-    body.light-theme #sepExitBtn2,
     body.light-theme #clearCartBtn,
     body.light-theme #copyMobilePay,
     body.light-theme #openMobilePay,
@@ -594,8 +585,6 @@
       border-color:#000!important;
     }
     body.light-theme #viewCartBtn,
-    body.light-theme #aboutBackBtn,
-    body.light-theme #sepExitBtn2,
     body.light-theme #copyMobilePay{
       background:#fff!important;
       color:#000!important;
@@ -695,6 +684,16 @@
       color:#fff!important;
       border:1px solid rgba(255,255,255,.2)!important;
     }
+        a[href*="instagram.com/se_proairesis"],
+    a[href*="tiktok.com/@se_proairesis"]{
+      color:#fff!important;
+    }
+
+    a[href*="instagram.com/se_proairesis"] .social-icon,
+    a[href*="tiktok.com/@se_proairesis"] .social-icon{
+      color:#fff!important;
+      fill:#fff!important;
+    }
   </style>
 </head>
 <body>
@@ -705,7 +704,7 @@
   </div>
 
   <h1 id="welcomeTitle">SEP</h1>
-  <p id="welcomeSubtitle">Your Choice. Either shop (SEP shop), or move (Make It Happen). That simple.</p>
+  <p id="welcomeSubtitle">Your Choice.</p>
   <div>
     <button class="welcome-btn" id="welcomeSepBtn" type="button">SEP shop</button>
     <button class="welcome-btn welcome-secondary" id="welcomeMihBtn" type="button">Make It Happen</button>
@@ -744,10 +743,7 @@
           <button data-lang="da" class="lang-btn px-3 py-1 rounded-full border border-white/30 text-xs" type="button">Dansk</button>
           <button data-lang="cs" class="lang-btn px-3 py-1 rounded-full border border-white/30 text-xs" type="button">Čeština</button>
         </div>
-      </div>
-      <div class="pt-4 border-t border-white/10">
-        <p id="sepInfoLabel" class="mb-2 font-semibold text-xs tracking-wide uppercase text-white/70">Info</p>
-        <button id="menuAboutBtn" class="w-full text-left px-3 py-2 rounded-lg bg-white/5 hover:bg-white/10 text-sm" type="button">About "SEP"</button>
+        
       </div>
       <div class="pt-4 border-t border-white/10">
         <p id="sepExitLabel" class="mb-2 font-semibold text-xs tracking-wide uppercase text-white/70">Exit</p>
@@ -879,34 +875,8 @@
       </div>
     </section>
 
-    <section class="py-20 text-center fade-section">
-      <h2 id="howToOrderTitle" class="text-3xl font-bold mb-10 text-white">How to Order</h2>
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 max-w-6xl mx-auto text-sm md:text-base">
-        <div class="bg-white/10 rounded-xl p-6 backdrop-blur text-white">
-          <h3 id="step1Title" class="font-bold text-lg mb-2">1. Choose</h3>
-          <p id="howStep1">Select your favourite SEP piece - T-shirt or Sweatshirt - then pick your size, colour, and quantity.</p>
-        </div>
-        <div class="bg-white/10 rounded-xl p-6 backdrop-blur text-white">
-          <h3 id="step2Title" class="font-bold text-lg mb-2">2. Add to Cart</h3>
-          <p id="howStep2">Click “Add” to add your chosen items to your cart. When ready, click “View Cart” to review your order.</p>
-        </div>
-        <div class="bg-white/10 rounded-xl p-6 backdrop-blur text-white">
-          <h3 id="step3Title" class="font-bold text-lg mb-2">3. Copy Order Message</h3>
-          <p id="howStep3">Inside your cart, press “Copy Order Message”. This copies your full order, including shipping, automatically.</p>
-        </div>
-        <div class="bg-white/10 rounded-xl p-6 backdrop-blur text-white">
-          <h3 id="step4Title" class="font-bold text-lg mb-2">4. Pay with MobilePay</h3>
-          <p id="howStep4">Send the total amount (incl. +45 DKK shipping, free in Copenhagen.) to <b>5894BZ</b> using MobilePay.<br><span class="text-xs italic">“Open MobilePay” works only on mobile devices.</span></p>
-        </div>
-        <div class="bg-white/10 rounded-xl p-6 backdrop-blur text-white">
-          <h3 id="step5Title" class="font-bold text-lg mb-2">5. Send us your order</h3>
-          <p id="howStep5">DM your copied message to <b>@se_proairesis</b> (Instagram) or <b>@se_proairesis</b> (TikTok).<br>We currently deliver only within Denmark.</p>
-        </div>
-      </div>
-    </section>
-
     <footer class="text-center py-10 fade-section text-white">
-      <p id="footerText">© 2025 SEP - Se Proairesis • MobilePay 5894BZ • +45 DKK Shipping • Made in Copenhagen. Only delivered across Denmark.</p>
+      <p id="footerText">© 2026 SEP. All rights reserved.</p>
       <div class="flex justify-center gap-4 mt-4">
         <a href="https://instagram.com/se_proairesis" class="bg-gradient-to-br from-pink-500 to-purple-600 text-white p-3 rounded-full flex items-center justify-center" target="_blank" rel="noreferrer" aria-label="Instagram">
           <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -921,19 +891,6 @@
       </div>
     </footer>
   </div>
-
-  <section id="sep-scene-about" class="py-20 px-6 hidden">
-    <div class="max-w-3xl mx-auto text-center text-white">
-      <h2 id="aboutTitle" class="theme-text text-3xl font-bold mb-4">About SEP</h2>
-      <p id="aboutBody1" class="theme-text mb-4">SEP stands for Se Proairesis - your choice in ancient greek. Each piece is pressed by hand in Copenhagen in small batches.</p>
-      <p id="aboutBody2" class="theme-text mb-4">We make batches with small choice but good quality - rather focusing on quality than choice. That doesn't mean we wont do big batches though. We can't buy thousands of peices yet (we are still a small brand staring up)</p>
-      <p id="aboutBody3" class="theme-text mb-8">One t-shirt, three sweatshirt colours; all built to be the first thing you reach for when you open your wardrobe. I'm still a 13-year-old which means I cant have apple pay yet. So there's only mobile pay so far.</p>
-      <button id="aboutBackBtn" class="mt-4 px-6 py-3 rounded-full border border-white/40 bg-white/10 hover:bg-white/20" type="button">Back to shop</button>
-      <div class="mt-6">
-        <button id="sepExitBtn2" class="px-5 py-2 rounded-full border border-white/30 bg-transparent hover:bg-white/10 text-sm" type="button">Exit to main menu</button>
-      </div>
-    </div>
-  </section>
 
   <div id="imageModal" class="hidden">
     <button id="imageModalClose" type="button" aria-label="Close image">✕</button>
@@ -1018,7 +975,7 @@
       <button class="mih-menu-btn" type="button" data-mih-scene="mih-leaderboard" id="mihMenuLeaderboardBtn">Leaderboard</button>
       <button class="mih-menu-btn" type="button" data-mih-scene="mih-profiles" id="mihMenuProfilesBtn">Profiles</button>
       <button class="mih-menu-btn" type="button" data-mih-scene="mih-stats" id="mihMenuStatsBtn">Stats</button>
-      <button class="mih-menu-btn" type="button" data-mih-scene="mih-about" id="mihMenuAboutBtn">About</button>
+      <button class="mih-menu-btn" type="button" data-mih-scene="mih-how-to-use" id="mihMenuHowToUseBtn">How to use</button>
 
       <div style="border-top:1px solid rgba(255,255,255,.12); margin:6px 0;"></div>
 
@@ -1158,14 +1115,11 @@
     </table>
   </section>
 
-  <section id="mih-about" class="scene">
-    <h1 id="mihAboutTitle">About the challenge</h1>
-    <p class="muted" id="mihAboutBody">
-      Make It Happen is about consistency. Not perfection.
-      Log your movement, no matter how small. Every metre counts.
-      We find that a league with competition motivates people to move more.
-    </p>
+    <section id="mih-how-to-use" class="scene">
+    <h1 id="mihHowToUseTitle">How to use</h1>
+    <p class="muted" id="mihHowToUseBody">This will be added later.</p>
   </section>
+
 </div>
 
 <script>
@@ -1259,21 +1213,20 @@
   const GLOBAL_TRANSLATIONS = {
     en: {
       welcomeTitle: "SEP",
-      welcomeSubtitle: "Your Choice. Either shop (SEP shop), or move (Make It Happen). That simple.",
+      welcomeSubtitle: "Your Choice.",
       welcomeSepBtn: "SEP shop",
       welcomeMihBtn: "Make It Happen",
       sepLangLabel: "Language",
-      sepInfoLabel: "Info",
       sepExitLabel: "Exit",
       sepExitBtn: "Back to main menu",
-      sepExitBtn2: "Exit to main menu",
       mihMenuTitle: "MENU",
       mihMenuLoginBtn: "Login",
       mihMenuHomeBtn: "Home",
       mihMenuLeaderboardBtn: "Leaderboard",
       mihMenuProfilesBtn: "Profiles",
       mihMenuStatsBtn: "Stats",
-      mihMenuAboutBtn: "About",
+      mihMenuHowToUseBtn: "How to use",
+      mihHowToUseTitle: "How to use",
       mihLangLabel: "Language",
       mihLogoutBtn: "Log out",
       mihDeleteAccountBtn: "Delete account",
@@ -1330,8 +1283,6 @@
       mihHistColKm: "Distance (km)",
       mihHistColMin: "Time (min)",
       mihHistColPace: "Pace",
-      mihAboutTitle: "About the challenge",
-      mihAboutBody: "Make It Happen is about consistency. Not perfection. Log your movement, no matter how small. Every metre counts. We find that a league with competition motivates people to move more.",
       toastSaved: "Saved",
       toastDeleted: "Account deleted",
       errLoginMissing: "Please enter both name and password.",
@@ -1346,21 +1297,20 @@
     },
     da: {
       welcomeTitle: "SEP",
-      welcomeSubtitle: "Dit valg. Enten shop (SEP shop), eller bevæg dig (Make It Happen). Så enkelt.",
+      welcomeSubtitle: "Dit valg.",
       welcomeSepBtn: "SEP shop",
       welcomeMihBtn: "Make It Happen",
       sepLangLabel: "Sprog",
-      sepInfoLabel: "Info",
       sepExitLabel: "Afslut",
       sepExitBtn: "Tilbage til hovedmenu",
-      sepExitBtn2: "Til hovedmenu",
       mihMenuTitle: "MENU",
       mihMenuLoginBtn: "Login",
       mihMenuHomeBtn: "Hjem",
       mihMenuLeaderboardBtn: "Leaderboard",
       mihMenuProfilesBtn: "Profiler",
       mihMenuStatsBtn: "Stats",
-      mihMenuAboutBtn: "Om",
+      mihMenuHowToUseBtn: "Sådan bruger du den",
+      mihHowToUseTitle: "Sådan bruger du den",
       mihLangLabel: "Sprog",
       mihLogoutBtn: "Log ud",
       mihDeleteAccountBtn: "Slet konto",
@@ -1417,8 +1367,6 @@
       mihHistColKm: "Distance (km)",
       mihHistColMin: "Tid (min)",
       mihHistColPace: "Tempo",
-      mihAboutTitle: "Om challenge",
-      mihAboutBody: "Make It Happen handler om kontinuitet. Ikke perfektion. Log din bevægelse, uanset hvor lidt. Hver meter tæller. Vi oplever, at en liga med konkurrence motiverer folk til at bevæge sig mere.",
       toastSaved: "Gemt",
       toastDeleted: "Konto slettet",
       errLoginMissing: "Indtast både navn og adgangskode.",
@@ -1432,21 +1380,20 @@
       noPlayers: "Ingen spillere endnu."
     },    cs: {
       welcomeTitle: "SEP",
-      welcomeSubtitle: "Tvoje volba. Buď nakupuj (SEP shop), nebo se hýbej (Make It Happen). Tak jednoduché.",
+      welcomeSubtitle: "Tvoje volba.",
       welcomeSepBtn: "SEP shop",
       welcomeMihBtn: "Make It Happen",
       sepLangLabel: "Jazyk",
-      sepInfoLabel: "Info",
       sepExitLabel: "Ukončit",
       sepExitBtn: "Zpět do hlavního menu",
-      sepExitBtn2: "Zpět do hlavního menu",
       mihMenuTitle: "MENU",
       mihMenuLoginBtn: "Login",
       mihMenuHomeBtn: "Domů",
       mihMenuLeaderboardBtn: "Leaderboard",
       mihMenuProfilesBtn: "Profily",
       mihMenuStatsBtn: "Statistiky",
-      mihMenuAboutBtn: "O aplikaci",
+      mihMenuHowToUseBtn: "Jak používat",
+      mihHowToUseTitle: "Jak používat",
       mihLangLabel: "Jazyk",
       mihLogoutBtn: "Odhlásit",
       mihDeleteAccountBtn: "Smazat účet",
@@ -1503,8 +1450,6 @@
       mihHistColKm: "Vzdálenost (km)",
       mihHistColMin: "Čas (min)",
       mihHistColPace: "Tempo",
-      mihAboutTitle: "O výzvě",
-      mihAboutBody: "Make It Happen je o konzistenci. Ne o perfektnosti. Zapisuj pohyb, i když je malý. Každý metr se počítá. Zjistili jsme, že liga s trochou soutěživosti motivuje lidi hýbat se víc.",
       toastSaved: "Uloženo",
       toastDeleted: "Účet smazán",
       errLoginMissing: "Zadej jméno i heslo.",
@@ -1549,11 +1494,11 @@
 
   function applyGlobalTranslations(){
     const map = [
-      'welcomeTitle','welcomeSubtitle','welcomeSepBtn','welcomeMihBtn',
-      'sepLangLabel','sepInfoLabel','sepExitLabel','sepExitBtn','sepExitBtn2',
-      'mihMenuTitle','mihMenuLoginBtn','mihMenuHomeBtn','mihMenuLeaderboardBtn','mihMenuProfilesBtn','mihMenuStatsBtn','mihMenuAboutBtn','mihLangLabel','mihLogoutBtn','mihDeleteAccountBtn','mihExitBtn',
+      'welcomeTitle','welcomeSubtitle','welcomeSepBtn','welcomeMihBtn','welcomeLoginBtn',
+      'sepLangLabel','sepExitLabel','sepExitBtn',
+      'mihMenuTitle','mihMenuLoginBtn','mihMenuHomeBtn','mihMenuLeaderboardBtn','mihMenuProfilesBtn','mihMenuStatsBtn','mihMenuHowToUseBtn','mihLangLabel','mihLogoutBtn','mihDeleteAccountBtn','mihExitBtn',
       'mihLoginTitle','mihLoginSubtitle','mihHomeTitle','mihHomeSubtitle','mihAddTitle','mihRecentTitle',
-      'mihLbTitle','mihLbSubtitle','mihProfilesTitle','mihProfilesSubtitle','mihStatsTitle','mihStatsHistoryTitle','mihAboutTitle',
+      'mihLbTitle','mihLbSubtitle','mihProfilesTitle','mihProfilesSubtitle','mihStatsTitle','mihStatsHistoryTitle','mihHowToUseTitle',
       'mihRecentColDate','mihRecentColKm','mihRecentColMin','mihRecentColPace',
       'mihLbColRank','mihLbColName','mihLbColKm','mihLbColMin','mihLbColPace',
       'mihProfilesColName','mihProfilesColKm','mihProfilesColMin','mihProfilesColRuns',
@@ -1570,9 +1515,6 @@
     });
 
     applyCurrentSepWelcomeStyle();
-
-    const mihAboutBody = document.getElementById('mihAboutBody');
-    if (mihAboutBody) mihAboutBody.textContent = GT('mihAboutBody');
 
     const leaguePill = document.getElementById('mihLeaguePill');
     if (leaguePill) leaguePill.textContent = GT('mihLeagueText');
@@ -1696,23 +1638,7 @@
       product2Name: "SEP Black Sweatshirt",
       product3Name: "SEP Grey Sweatshirt",
       product4Name: "SEP Cream Sweatshirt",
-      aboutTitle: "About SEP",
-      aboutBody1: "SEP stands for Se Proairesis - your choice in ancient greek. Each piece is pressed by hand in Copenhagen in small batches.",
-      aboutBody2: "We make batches with small choice but good quality - rather focusing on quality than choice. That doesn't mean we wont do big batches though. We can't buy thousands of peices yet (we are still a small brand staring up)",
-      aboutBody3: "One t-shirt, three sweatshirt colours; all built to be the first thing you reach for when you open your wardrobe. I'm still a 13-year-old which means I cant have apple pay yet. So there's only mobile pay so far.",
-      aboutBackBtn: "Back to shop",
-      howToOrderTitle: "How to Order",
-      step1Title: "1. Choose",
-      step2Title: "2. Add to Cart",
-      step3Title: "3. Copy Order Message",
-      step4Title: "4. Pay with MobilePay",
-      step5Title: "5. Send us your order",
-      howStep1: "Select your favourite SEP piece - T-shirt or Sweatshirt - then pick your size, colour, and quantity.",
-      howStep2: "Click “Add” to add your chosen items to your cart. When ready, click “View Cart” to review your order.",
-      howStep3: "Inside your cart, press “Copy Order Message”. This copies your full order, including shipping, automatically.",
-      howStep4: "Send the total amount (incl. +45 DKK shipping, free in Copenhagen.) to 5894BZ using MobilePay.\n“Open MobilePay” works only on mobile devices.",
-      howStep5: "DM your copied message to @se_proairesis (Instagram) or @se_proairesis (TikTok).\nWe currently deliver only within Denmark.",
-      footerText: "© 2025 SEP - Se Proairesis • MobilePay 5894BZ • +45 DKK Shipping • Made in Copenhagen. Only delivered across Denmark.",
+      footerText: "© 2026 SEP. All rights reserved.",
       cartTitle: "Your Cart",
       cartSubtotalLabel: "Subtotal:",
       cartShippingLabel: "Shipping:",
@@ -1750,23 +1676,7 @@
       product2Name: "SEP sort sweatshirt",
       product3Name: "SEP grå sweatshirt",
       product4Name: "SEP cream sweatshirt",
-      aboutTitle: "Om SEP",
-      aboutBody1: "SEP står for Se Proairesis - dit valg på oldgræsk. Hvert stykke presses i hånden i København i små batches.",
-      aboutBody2: "Vi laver batches med få valg, men god kvalitet - vi fokuserer mere på kvalitet end udvalg. Det betyder ikke, at vi ikke vil lave større batches senere. Vi kan bare ikke købe tusindvis endnu (vi er stadig et lille brand i opstart).",
-      aboutBody3: "En T-shirt, tre sweatshirt-farver; lavet til at være det første, du rækker ud efter. Jeg er stadig 13 år, så jeg kan ikke have Apple Pay endnu. Derfor er der kun MobilePay lige nu.",
-      aboutBackBtn: "Tilbage til shop",
-      howToOrderTitle: "Sådan bestiller du",
-      step1Title: "1. Vælg",
-      step2Title: "2. Læg i kurv",
-      step3Title: "3. Kopiér ordrebesked",
-      step4Title: "4. Betal med MobilePay",
-      step5Title: "5. Send din ordre",
-      howStep1: "Vælg din foretrukne SEP-del - T-shirt eller sweatshirt - og vælg størrelse, farve og antal.",
-      howStep2: "Tryk “Læg i kurv” for at tilføje dine varer. Når du er klar, tryk “Se kurv” for at gennemgå din ordre.",
-      howStep3: "I kurven trykker du “Kopiér ordrebesked”. Det kopierer hele din ordre automatisk, inkl. fragt.",
-      howStep4: "Send det samlede beløb (inkl. +45 DKK fragt, gratis i København) til 5894BZ via MobilePay.\n“Åbn MobilePay” virker kun på mobilenheder.",
-      howStep5: "Send din besked som DM til @se_proairesis (Instagram) eller @se_proairesis (TikTok).\nVi leverer kun i Danmark.",
-      footerText: "© 2025 SEP - Se Proairesis • MobilePay 5894BZ • +45 DKK fragt • Lavet i København. Leveres kun i Danmark.",
+      footerText: "© 2026 SEP. Alle rettigheder forbeholdes.",
       cartTitle: "Din kurv",
       cartSubtotalLabel: "Subtotal:",
       cartShippingLabel: "Fragt:",
@@ -1804,23 +1714,7 @@
       product2Name: "SEP černá mikina",
       product3Name: "SEP šedá mikina",
       product4Name: "SEP krémová mikina",
-      aboutTitle: "O SEP",
-      aboutBody1: "SEP znamená Se Proairesis - tvoje volba ve staré řečtině. Každý kus je ručně lisovaný v Kodani v malých sériích.",
-      aboutBody2: "Děláme série s malým výběrem, ale dobrou kvalitou - soustředíme se víc na kvalitu než na množství. To neznamená, že později neuděláme větší série. Jen zatím nemůžeme koupit tisíce kusů (pořád jsme malá začínající značka).",
-      aboutBody3: "Jedno tričko, tři barvy mikiny; vytvořené tak, aby to byla první věc, po které sáhneš. Je mi stále 13, takže zatím nemůžu mít Apple Pay. Proto je tu zatím jen MobilePay.",
-      aboutBackBtn: "Zpět do shopu",
-      howToOrderTitle: "Jak objednat",
-      step1Title: "1. Vyber",
-      step2Title: "2. Přidej do košíku",
-      step3Title: "3. Zkopíruj zprávu",
-      step4Title: "4. Zaplať přes MobilePay",
-      step5Title: "5. Pošli objednávku",
-      howStep1: "Vyber si svůj oblíbený SEP kus - tričko nebo mikinu - a zvol velikost, barvu a množství.",
-      howStep2: "Klikni na “Přidat” a položky se vloží do košíku. Až budeš připravený, otevři košík a zkontroluj objednávku.",
-      howStep3: "V košíku stiskni “Kopírovat zprávu”. Tím se automaticky zkopíruje celá objednávka včetně dopravy.",
-      howStep4: "Pošli celkovou částku (včetně +45 DKK dopravy, zdarma v Kodani) na 5894BZ přes MobilePay.\n“Otevřít MobilePay” funguje jen na mobilu.",
-      howStep5: "Pošli zprávu přes DM na @se_proairesis (Instagram) nebo @se_proairesis (TikTok).\nDoručujeme pouze v Dánsku.",
-      footerText: "© 2025 SEP - Se Proairesis • MobilePay 5894BZ • +45 DKK doprava • Vyrobeno v Kodani. Pouze Dánsko.",
+      footerText: "© 2026 SEP. Všechna práva vyhrazena.",
       cartTitle: "Košík",
       cartSubtotalLabel: "Mezisoučet:",
       cartShippingLabel: "Doprava:",
@@ -2057,22 +1951,6 @@
     setText('product2Name', t.product2Name);
     setText('product3Name', t.product3Name);
     setText('product4Name', t.product4Name);
-    setText('aboutTitle', t.aboutTitle);
-    setText('aboutBody1', t.aboutBody1);
-    setText('aboutBody2', t.aboutBody2);
-    setText('aboutBody3', t.aboutBody3);
-    setText('aboutBackBtn', t.aboutBackBtn);
-    setText('howToOrderTitle', t.howToOrderTitle);
-    setText('step1Title', t.step1Title);
-    setText('step2Title', t.step2Title);
-    setText('step3Title', t.step3Title);
-    setText('step4Title', t.step4Title);
-    setText('step5Title', t.step5Title);
-    setText('howStep1', t.howStep1);
-    setText('howStep2', t.howStep2);
-    setText('howStep3', t.howStep3);
-    setText('howStep4', t.howStep4);
-    setText('howStep5', t.howStep5);
     setText('footerText', t.footerText);
     setText('cartTitle', t.cartTitle);
     setText('cartSubtotalLabel', t.cartSubtotalLabel);
@@ -2128,23 +2006,6 @@
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => sepSetLanguage(btn.getAttribute('data-lang')));
   });
-
-  window.sepShowScene = function(scene){
-    const main = document.getElementById('sep-scene-main');
-    const about = document.getElementById('sep-scene-about');
-    if (scene === 'about') {
-      main.classList.add('hidden');
-      about.classList.remove('hidden');
-    } else {
-      about.classList.add('hidden');
-      main.classList.remove('hidden');
-    }
-    window.scrollTo({ top: 0, behavior: 'auto' });
-    closeMenu();
-  };
-
-  document.getElementById('menuAboutBtn')?.addEventListener('click', () => window.sepShowScene('about'));
-  document.getElementById('aboutBackBtn')?.addEventListener('click', () => window.sepShowScene('main'));
 
   const cartSidebar = document.getElementById('cartSidebar');
   const cartOverlay = document.getElementById('cartOverlay');
@@ -2347,7 +2208,6 @@
   });
 
   document.getElementById('sepExitBtn')?.addEventListener('click', () => { closeCart(); closeMenu(); backToMainMenu(); });
-  document.getElementById('sepExitBtn2')?.addEventListener('click', () => { closeCart(); closeMenu(); backToMainMenu(); });
   document.getElementById('sepTopExit')?.addEventListener('click', () => { closeCart(); closeMenu(); backToMainMenu(); });
   document.getElementById('sepThemeToggle')?.addEventListener('click', toggleTheme);
   document.getElementById('welcomeThemeToggle')?.addEventListener('click', toggleTheme);
