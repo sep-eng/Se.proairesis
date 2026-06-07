@@ -5,15 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>SEP</title>
-  <meta name="description" content="SEP sessions, detox and checklist tracker with local storage and Firebase sync." />
+  <meta name="description" content="SEP sessions, detox and checklist tracker with local storage." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore-compat.js"></script>
 
   <style>
     :root {
@@ -166,8 +162,7 @@
     .top-pill,
     .back-btn,
     .theme-toggle,
-    .edit-toggle,
-    .login-btn {
+    .edit-toggle {
       border: 1px solid var(--line);
       background: var(--card);
       backdrop-filter: blur(18px);
@@ -180,15 +175,13 @@
     }
 
     .back-btn,
-    .edit-toggle,
-    .login-btn {
+    .edit-toggle {
       color: var(--text);
       display: none;
     }
 
     .back-btn.show,
-    .edit-toggle.show,
-    .login-btn.show {
+    .edit-toggle.show {
       display: inline-flex;
     }
 
@@ -797,18 +790,16 @@
           <span>Your Choice</span>
         </div>
       </button>
-
+      
       <div class="top-actions">
         <button class="back-btn" id="backBtn" type="button">Back</button>
         <button class="edit-toggle" id="editToggle" type="button">Edit</button>
         <button class="back-btn show" id="howToUseBtn" type="button">How to use</button>
-        <button class="login-btn show" id="loginBtn" type="button">Log in</button>
-        <button class="login-btn" id="logoutBtn" type="button">Log out</button>
         <button class="theme-toggle" id="themeToggle" type="button">
           <span class="theme-dot"></span>
           <span id="themeText">Dark</span>
         </button>
-        <div class="top-pill" id="syncPill">Saved locally</div>
+        <div class="top-pill">Saved locally</div>
       </div>
     </header>
 
@@ -899,52 +890,28 @@
     </section>
 
     <section class="view" id="howToUseView">
-      <article class="data-card">
-        <div class="data-top">
-          <h2 class="data-name">How to use.</h2>
-          <div class="status dark">Guide</div>
-        </div>
+  <article class="data-card">
+    <div class="data-top">
+      <h2 class="data-name">How to use.</h2>
+      <div class="status dark">Guide</div>
+    </div>
 
-        <div class="checklist-list">
-          <div class="check-item">
-            <div class="check-btn">1</div>
-            <div>
-              <div class="check-title">ADD YOUR TEXT HERE</div>
-              <span class="check-time">ADD YOUR TEXT HERE</span>
-            </div>
-          </div>
+    <div class="checklist-list">
+      <div class="check-item">
+        <div class="check-btn">1</div>
+        <div>
+          <div class="check-title">ADD YOUR TEXT HERE</div>
+          <span class="check-time">ADD YOUR TEXT HERE</span>
         </div>
-      </article>
-    </section>
+      </div>
+    </div> 
+  </article>
+</section>
 
-    <p class="small-print" id="smallPrint">
-      Your data is saved with local storage. Log in to sync it with Firebase.
+    <p class="small-print">
+      Your data is saved with local storage, so it stays on this browser and device.
     </p>
   </main>
-
-  <div class="modal" id="loginModal">
-    <div class="modal-card">
-      <h2>Log in.</h2>
-      <p>Use the same username and password as Make It Happen. If the username is new, it creates the account automatically.</p>
-
-      <form id="loginForm">
-        <div class="field">
-          <label for="loginUsername">Username</label>
-          <input id="loginUsername" type="text" placeholder="Your name" maxlength="50" autocomplete="username" required />
-        </div>
-
-        <div class="field">
-          <label for="loginPassword">Password</label>
-          <input id="loginPassword" type="password" placeholder="Password" minlength="6" autocomplete="current-password" required />
-        </div>
-
-        <div class="modal-actions">
-          <button class="btn btn-light" type="button" data-close-modal>Cancel</button>
-          <button class="btn btn-dark" id="loginSubmitBtn" type="submit">Log in</button>
-        </div>
-      </form>
-    </div>
-  </div>
 
   <div class="modal" id="sessionCreateModal">
     <div class="modal-card">
@@ -1071,27 +1038,6 @@
     const MAX_DETOX = 10;
     const MAX_CHECKLIST = 100;
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyAkbH3mJkeheF3L7EaqN1kMgbFd_LJCIXo",
-      authDomain: "hitachi-vantara-make-it-happen.firebaseapp.com",
-      projectId: "hitachi-vantara-make-it-happen",
-      storageBucket: "hitachi-vantara-make-it-happen.firebasestorage.app",
-      messagingSenderId: "749690169824",
-      appId: "1:749690169824:web:21d6b8d2a5862847e4e385",
-      measurementId: "G-7WZ03E68MF"
-    };
-
-    const COL_HABITS_DATA = "habits_data_v1";
-    const COL_HABITS_USERS = "habits_users_v1";
-
-    let auth = null;
-    let db = null;
-    let currentUser = null;
-    let currentUserName = "";
-    let firebaseReady = false;
-    let firebaseLoadDone = false;
-    let cloudSaveTimer = null;
-
     const root = document.documentElement;
 
     const homeView = document.getElementById("homeView");
@@ -1108,10 +1054,6 @@
     const themeToggle = document.getElementById("themeToggle");
     const themeText = document.getElementById("themeText");
     const howToUseBtn = document.getElementById("howToUseBtn");
-    const loginBtn = document.getElementById("loginBtn");
-    const logoutBtn = document.getElementById("logoutBtn");
-    const syncPill = document.getElementById("syncPill");
-    const smallPrint = document.getElementById("smallPrint");
 
     const heroEyebrow = document.getElementById("heroEyebrow");
     const heroTitle = document.getElementById("heroTitle");
@@ -1129,12 +1071,6 @@
     const detoxGrid = document.getElementById("detoxGrid");
     const timeChecklistGrid = document.getElementById("timeChecklistGrid");
     const normalChecklistGrid = document.getElementById("normalChecklistGrid");
-
-    const loginModal = document.getElementById("loginModal");
-    const loginForm = document.getElementById("loginForm");
-    const loginUsername = document.getElementById("loginUsername");
-    const loginPassword = document.getElementById("loginPassword");
-    const loginSubmitBtn = document.getElementById("loginSubmitBtn");
 
     const sessionCreateModal = document.getElementById("sessionCreateModal");
     const sessionTimeModal = document.getElementById("sessionTimeModal");
@@ -1193,13 +1129,8 @@
       }
     }
 
-    function saveLocalOnly(key, data) {
-      localStorage.setItem(key, JSON.stringify(data));
-    }
-
     function save(key, data) {
-      saveLocalOnly(key, data);
-      queueCloudSave();
+      localStorage.setItem(key, JSON.stringify(data));
     }
 
     function now() {
@@ -1214,40 +1145,6 @@
       const div = document.createElement("div");
       div.textContent = text;
       return div.innerHTML;
-    }
-
-    function safeName(name) {
-      return String(name || "")
-        .trim()
-        .replace(/\//g, "-")
-        .slice(0, 40);
-    }
-
-    function usernameKey(name) {
-      return safeName(name)
-        .toLowerCase()
-        .replace(/[^a-z0-9._-]/g, "-")
-        .replace(/-+/g, "-")
-        .replace(/^-|-$/g, "")
-        .slice(0, 40) || "user";
-    }
-
-    function usernameEmail(name) {
-      return `${usernameKey(name)}@sep.local`;
-    }
-
-    function firebaseErrorMessage(error) {
-      const code = error && error.code ? error.code : "";
-
-      if (code === "auth/wrong-password") return "Wrong password for this username.";
-      if (code === "auth/invalid-credential") return "Wrong password for this username.";
-      if (code === "auth/weak-password") return "Password must be at least 6 characters.";
-      if (code === "auth/email-already-in-use") return "This username already exists. Use the correct password.";
-      if (code === "auth/network-request-failed") return "Network error. Check your internet.";
-      if (code === "permission-denied" || code === "firestore/permission-denied") return "Missing or insufficient Firestore permissions.";
-      if (code === "auth/requires-recent-login") return "Please log out, log in again, then try again.";
-
-      return error && error.message ? error.message : "Unknown Firebase error.";
     }
 
     function setMotivation() {
@@ -1268,225 +1165,6 @@
     function toggleTheme() {
       const currentTheme = root.getAttribute("data-theme");
       applyTheme(currentTheme === "dark" ? "light" : "dark");
-    }
-
-    function updateLoginUI() {
-      if (currentUser) {
-        loginBtn.classList.remove("show");
-        logoutBtn.classList.add("show");
-        syncPill.textContent = `Synced as ${currentUserName || "user"}`;
-        smallPrint.textContent = "Your data is saved locally and synced with Firebase.";
-      } else {
-        loginBtn.classList.add("show");
-        logoutBtn.classList.remove("show");
-        syncPill.textContent = firebaseReady ? "Saved locally" : "Local only";
-        smallPrint.textContent = firebaseReady
-          ? "Your data is saved with local storage. Log in to sync it with Firebase."
-          : "Your data is saved locally. Firebase is not connected.";
-      }
-    }
-
-    async function initFirebase() {
-      try {
-        if (typeof firebase === "undefined") {
-          firebaseReady = false;
-          updateLoginUI();
-          console.error("Firebase script did not load.");
-          return;
-        }
-
-        if (!firebase.apps.length) {
-          firebase.initializeApp(firebaseConfig);
-        }
-
-        auth = firebase.auth();
-        db = firebase.firestore();
-
-        await auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL);
-
-        firebaseReady = true;
-        updateLoginUI();
-
-        auth.onAuthStateChanged(async user => {
-          currentUser = user || null;
-          currentUserName = "";
-
-          if (currentUser) {
-            currentUserName = currentUser.displayName || "";
-            await ensureHabitsUserDoc();
-            await loadHabitsFromFirebase();
-          }
-
-          firebaseLoadDone = true;
-          updateLoginUI();
-          render();
-        });
-      } catch (error) {
-        firebaseReady = false;
-        currentUser = null;
-        currentUserName = "";
-        firebaseLoadDone = true;
-        updateLoginUI();
-        console.error("Firebase init error:", error);
-      }
-    }
-
-    async function ensureHabitsUserDoc() {
-      if (!db || !currentUser) return;
-
-      const ref = db.collection(COL_HABITS_USERS).doc(currentUser.uid);
-      const snap = await ref.get();
-      const name = currentUser.displayName || currentUserName || "User";
-
-      if (!snap.exists) {
-        await ref.set({
-          uid: currentUser.uid,
-          name,
-          usernameKey: usernameKey(name),
-          createdAt: now(),
-          updatedAt: now()
-        });
-        return;
-      }
-
-      await ref.set({
-        uid: currentUser.uid,
-        name,
-        usernameKey: usernameKey(name),
-        updatedAt: now()
-      }, { merge: true });
-    }
-
-    function queueCloudSave() {
-      if (!db || !currentUser || !firebaseLoadDone) return;
-
-      clearTimeout(cloudSaveTimer);
-      cloudSaveTimer = setTimeout(() => {
-        saveHabitsToFirebase().catch(error => {
-          console.error("Cloud save failed:", error);
-          syncPill.textContent = "Sync failed";
-        });
-      }, 350);
-    }
-
-    async function saveHabitsToFirebase() {
-      if (!db || !currentUser) return;
-
-      syncPill.textContent = "Syncing...";
-
-      await db.collection(COL_HABITS_DATA).doc(currentUser.uid).set({
-        uid: currentUser.uid,
-        username: currentUserName || currentUser.displayName || "",
-        sessions,
-        detoxes,
-        timeChecklist,
-        normalChecklist,
-        updatedAt: now()
-      }, { merge: true });
-
-      syncPill.textContent = `Synced as ${currentUserName || "user"}`;
-    }
-
-    async function loadHabitsFromFirebase() {
-      if (!db || !currentUser) return;
-
-      const ref = db.collection(COL_HABITS_DATA).doc(currentUser.uid);
-      const snap = await ref.get();
-
-      if (!snap.exists) {
-        await saveHabitsToFirebase();
-        return;
-      }
-
-      const data = snap.data() || {};
-
-      sessions = Array.isArray(data.sessions) ? data.sessions : sessions;
-      detoxes = Array.isArray(data.detoxes) ? data.detoxes : detoxes;
-      timeChecklist = Array.isArray(data.timeChecklist) ? data.timeChecklist : timeChecklist;
-      normalChecklist = Array.isArray(data.normalChecklist) ? data.normalChecklist : normalChecklist;
-
-      saveLocalOnly(STORAGE_SESSIONS, sessions);
-      saveLocalOnly(STORAGE_DETOX, detoxes);
-      saveLocalOnly(STORAGE_TIME_CHECKLIST, timeChecklist);
-      saveLocalOnly(STORAGE_NORMAL_CHECKLIST, normalChecklist);
-    }
-
-    async function login() {
-      if (!auth || !db) {
-        alert("Firebase is not ready. Check config, Authentication, Firestore rules, or internet.");
-        return;
-      }
-
-      const name = safeName(loginUsername.value);
-      const password = loginPassword.value.trim();
-
-      if (!name || !password) {
-        alert("Enter both username and password.");
-        return;
-      }
-
-      if (password.length < 6) {
-        alert("Password must be at least 6 characters.");
-        return;
-      }
-
-      const email = usernameEmail(name);
-
-      try {
-        loginSubmitBtn.disabled = true;
-        loginSubmitBtn.textContent = "Loading...";
-
-        let cred;
-
-        try {
-          cred = await auth.createUserWithEmailAndPassword(email, password);
-          await cred.user.updateProfile({ displayName: name });
-        } catch (createError) {
-          if (createError.code === "auth/email-already-in-use") {
-            cred = await auth.signInWithEmailAndPassword(email, password);
-          } else {
-            throw createError;
-          }
-        }
-
-        currentUser = cred.user;
-        currentUserName = currentUser.displayName || name;
-
-        await ensureHabitsUserDoc();
-        await loadHabitsFromFirebase();
-
-        closeModals();
-        updateLoginUI();
-        render();
-      } catch (error) {
-        console.error("Login error:", error);
-        alert(`Login error: ${firebaseErrorMessage(error)}`);
-      } finally {
-        loginSubmitBtn.disabled = false;
-        loginSubmitBtn.textContent = "Log in";
-      }
-    }
-
-    async function logout() {
-      try {
-        if (auth) {
-          await auth.signOut();
-        }
-      } catch (error) {
-        console.error("Logout error:", error);
-      }
-
-      currentUser = null;
-      currentUserName = "";
-      updateLoginUI();
-      render();
-    }
-
-    function openLoginModal() {
-      loginUsername.value = "";
-      loginPassword.value = "";
-      openModal(loginModal);
-      setTimeout(() => loginUsername.focus(), 50);
     }
 
     function showView(view) {
@@ -1559,7 +1237,7 @@
 
       render();
     }
-
+    
     function goBack() {
       if (currentView === "timeChecklist" || currentView === "normalChecklist") {
         showView("checklistChoice");
@@ -2114,7 +1792,7 @@
       normalChecklistGrid.appendChild(card);
       countBadge.textContent = `${normalChecklist.length} / ${MAX_CHECKLIST} items`;
     }
-
+    
     function render() {
       if (currentView === "sessions") renderSessions();
       if (currentView === "detox") renderDetoxes();
@@ -2155,8 +1833,6 @@
     backBtn.addEventListener("click", goBack);
     themeToggle.addEventListener("click", toggleTheme);
     howToUseBtn.addEventListener("click", () => showView("howToUse"));
-    loginBtn.addEventListener("click", openLoginModal);
-    logoutBtn.addEventListener("click", logout);
 
     editToggle.addEventListener("click", () => {
       normalEditMode = !normalEditMode;
@@ -2182,11 +1858,6 @@
 
     document.addEventListener("keydown", event => {
       if (event.key === "Escape") closeModals();
-    });
-
-    loginForm.addEventListener("submit", event => {
-      event.preventDefault();
-      login();
     });
 
     sessionCreateForm.addEventListener("submit", event => {
@@ -2264,10 +1935,8 @@
     initTheme();
     setMotivation();
     showView("home");
-    updateLoginUI();
     updateLiveDetox();
     setInterval(updateLiveDetox, 1000);
-    initFirebase();
   </script>
 </body>
 </html>
