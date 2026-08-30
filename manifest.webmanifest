@@ -1,0 +1,19 @@
+{
+  "id": "./",
+  "name": "SEP",
+  "short_name": "SEP",
+  "description": "SEP clothing, designed and pressed in Copenhagen.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#111111",
+  "theme_color": "#111111",
+  "icons": [
+    {
+      "src": "images/sep-favicon-512-white.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
